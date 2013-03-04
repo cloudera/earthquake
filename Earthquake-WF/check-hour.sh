@@ -27,7 +27,7 @@ if [ $numLines \< 2 ]
 then
     echo "isLarger=false"
 else
-    largest=`tail -n +2 hour.txt | cut -f 5 -d "," | sort | tail -n -1`
+    largest=`tail -n +2 hour.txt | cut -f 5 -d "," | sort -n | tail -n -1`
     compare=`echo $largest '>=' $earthquakeMin | bc -l`
     if [ "$compare" == "1" ]
     then

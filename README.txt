@@ -3,7 +3,7 @@
 == How to: Use the Oozie Shell and Java Actions ==
 ==================================================
 ==================================================
-Blog Post: http://TODO
+Blog Post: http://blog.cloudera.com/blog/2013/03/how-to-use-oozie-shell-and-java-actions
 
 
 
@@ -13,7 +13,7 @@ Blog Post: http://TODO
 The Java code used in the Java action is located in the Earthquake-J folder and is a standard maven project.
 
 1) cd to Earthquake-J
-2) Run 'mvn package to generate target/Earthquake-J-1.0-SNAPSHOT.jar'
+2) Run 'mvn package' to generate target/Earthquake-J-1.0-SNAPSHOT.jar
 
 
 ==========================

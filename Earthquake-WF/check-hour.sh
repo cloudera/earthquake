@@ -20,7 +20,7 @@
 
 earthquakeMin="$1"
 
-curl http://earthquake.usgs.gov/earthquakes/feed/csv/all/hour -o "hour.txt" -s -S -f
+curl http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.csv -o "hour.txt" -s -S -f
 
 numLines=`cat hour.txt | wc -l`
 if [ $numLines \< 2 ]

@@ -15,6 +15,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 -- 
-A = LOAD '$INPUT' USING PigStorage(',') AS (a1,a2,a3,a4,a5:float,a6,a7,a8,a9,a10,a11,a12,a13);
+A = LOAD '$INPUT' USING PigStorage(',') AS (a1,a2,a3,a4,a5:float,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15);
 B = FILTER A BY (a5 >= $MINMAG);
 STORE B INTO '$OUTPUT' USING PigStorage(',');

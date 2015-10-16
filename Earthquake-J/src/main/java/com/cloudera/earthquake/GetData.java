@@ -30,7 +30,7 @@ import org.apache.hadoop.fs.Path;
 public class GetData {
 
     public static void main(String[] args) throws IOException {
-        URL url = new URL("http://earthquake.usgs.gov/earthquakes/feed/csv/2.5/month");
+        URL url = new URL("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv");
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         conn.connect();
         InputStream connStream = conn.getInputStream();

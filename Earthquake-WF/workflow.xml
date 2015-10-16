@@ -16,18 +16,21 @@
   limitations under the License.
 -->
 <workflow-app xmlns="uri:oozie:workflow:0.4" name="earthquake-wf">
+    <global>
+        <job-tracker>${jobTracker}</job-tracker>
+        <name-node>${nameNode}</name-node>
+        <configuration>
+            <property>
+                <name>mapred.job.queue.name</name>
+                <value>${queueName}</value>
+            </property>
+        </configuration>
+    </global>
+
     <start to="shell-check-hour"/>
 
     <action name="shell-check-hour">
-        <shell xmlns="uri:oozie:shell-action:0.2">
-            <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${nameNode}</name-node>
-            <configuration>
-                <property>
-                    <name>mapred.job.queue.name</name>
-                    <value>${queueName}</value>
-                </property>
-            </configuration>
+        <shell xmlns="uri:oozie:shell-action:0.3">
             <exec>check-hour.sh</exec>
             <argument>${earthquakeMinThreshold}</argument>
             <file>check-hour.sh</file>
@@ -48,18 +51,10 @@
 
     <action name="get-data">
         <java>
-            <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${nameNode}</name-node>
             <prepare>
                 <delete path="${dataInputDir}"/>
                 <mkdir path="${dataInputDir}"/>
             </prepare>
-            <configuration>
-                <property>
-                    <name>mapred.job.queue.name</name>
-                    <value>${queueName}</value>
-                </property>
-            </configuration>
             <main-class>com.cloudera.earthquake.GetData</main-class>
             <arg>${dataInputDir}</arg>
         </java>
@@ -69,17 +64,9 @@
 
     <action name="filter-data">
         <pig>
-            <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${nameNode}</name-node>
             <prepare>
                 <delete path="${outputDir}"/>
             </prepare>
-            <configuration>
-                <property>
-                    <name>mapred.job.queue.name</name>
-                    <value>${queueName}</value>
-                </property>
-            </configuration>
             <script>filter-data.pig</script>
             <param>INPUT=${dataInputDir}</param>
             <param>OUTPUT=${outputDir}</param>

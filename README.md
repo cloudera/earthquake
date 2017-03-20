@@ -1,21 +1,19 @@
-# How to: Use the Oozie Shell and Java Actions
-
+How to: Use the Oozie Shell and Java Actions
+===
 Blog Post: http://blog.cloudera.com/blog/2013/03/how-to-use-oozie-shell-and-java-actions
 
 
 
-## Building the Java Code
-
-----
+Building the Java Code
+---
 The Java code used in the Java action is located in the Earthquake-J folder and is a standard maven project.
 
 1. cd to Earthquake-J
 1. Run `mvn clean package` to generate `target/Earthquake-J-1.0-SNAPSHOT.jar`
 
 
-## Preparing the Workflow
-
-----
+Preparing the Workflow
+---
 The Oozie Workflow is located in the Earthquake-WF folder.
 
 1. After building it, copy the Earthquake-J-1.0-SNAPSHOT.jar file to the `Earthquake-WF/lib/` folder (this allows the WF to find the JAR)
@@ -27,9 +25,8 @@ The Oozie Workflow is located in the Earthquake-WF folder.
   - `earthquakeMinThreshold` the minimum earthquake magnitude to use
 
 
-## Running the Workflow
-
-----
+Running the Workflow
+---
 You can now create a Coordinator job to run the workflow every hour.  If you'd like to test it out by running the Workflow directly
 you can follow these instructions (from the Earthquake folder):
 
